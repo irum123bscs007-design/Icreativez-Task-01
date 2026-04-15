@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SEO Score Calculator</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f2f2f2;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.container {
+    background: white;
+    width: 320px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+button {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #218838;
+}
+
+.result-box {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>SEO Score Calculator</h1>
+
+<input type="number" id="title" placeholder="Title Score (0-100)">
+<input type="number" id="meta" placeholder="Meta Description (0-100)">
+<input type="number" id="keyword" placeholder="Keyword Usage (0-100)">
+<input type="number" id="backlinks" placeholder="Backlinks (0-100)">
+
+<button onclick="calculateScore()">Calculate Score</button>
+
+<h2 id="result" class="result-box"></h2>
+
+</div>
+
+<script>
+function calculateScore() {
+
+    let title = Number(document.getElementById("title").value);
+    let meta = Number(document.getElementById("meta").value);
+    let keyword = Number(document.getElementById("keyword").value);
+    let backlinks = Number(document.getElementById("backlinks").value);
+
+    let score = (title + meta + keyword + backlinks) / 4;
+
+    let result = document.getElementById("result");
+
+    result.innerText = "SEO Score: " + score;
+
+    if (score >= 80) {
+        result.style.backgroundColor = "green";
+        result.style.color = "white";
+    } 
+    else if (score >= 50) {
+        result.style.backgroundColor = "orange";
+        result.style.color = "white";
+    } 
+    else {
+        result.style.backgroundColor = "red";
+        result.style.color = "white";
+    }
+}
+</script>
+
+</body>
+</html>
